@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<title>Home Page</title>
+
+		<style type="text/css">
+			.btn_style
+			{
+				float: right;
+				
+			}
+			.main
+			{
+				background-image: url('static/images/table.jpg');
+				background-repeat: no-repeat;
+				background-size: cover; 
+				
+			}	
+			.nav_label
+			{
+				padding-top: 10px;
+				color:  #ffffff;
+				padding-left: 10px;
+			}
+
+			.nav_color
+			{
+				background-color: #000000;
+				opacity:.6;
+			}
+			.container_style_2
+			{						
+				margin-top: 30px;	
+				height: 200px;		
+			}
+			.container_style_3{
+								
+				margin-top: 10px;	
+										
+			}
+			.label_style
+			{
+				font-size: 25px;
+				font-family: times new roman;
+				color: #0b0c0d;
+				position: absolute;
+				top:1px;
+			}
+			.div_style
+			{
+				margin-top: 30px;
+				
+			}
+			 .img_style
+			 {
+				padding-top: 10px;
+				height: 150px;
+				width: 250px;
+			}		
+			.container_style_3
+			{
+				margin-top: 20px;										
+			}
+		</style>
+
+	</head>
+	<body class="main">
+		<div class="col-xs-12 col-md-12 col-sm-12">
+			<header>
+				<div class="container-fluid">
+					<nav class="navbar navbar-expand-md custom-nav nav_color">
+						<div class="container-fluid">
+							<label class="nav_label"><b>Employee list</b></label>
+							<a href="{{(url_for('addEmployee'))}}">
+								<button type="button" class="btn btn-danger btn_style" style="font-family: times new roman;">View Employee<br>
+								<i class='fas fa-angle-double-right ' style='font-size:20px';></i></button>
+							</a>
+						</div>
+				 	</nav>
+			 	</div>
+			</header>
+		</div>
+		<div class="container">
+			<div class="row container_style_3">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<table class="table table-striped ">
+						<thead>
+							<tr>
+								<th colspan="11"><center>Employee List</center></th>
+							</tr>
+							<tr>
+								<th> <center>SL NO</center></th>
+								<th colspan="2"><center>Name</center> </th>
+								<th colspan="2"> <center>Address </center></th>
+								<th colspan="2"> <center>Salary</center></th>
+								<th colspan="2"> <center>Department</center></th>
+								<th colspan="2"> <center>Delete</center></th>	
+							</tr>
+						</thead>
+						{% for r in details %}
+						<tr>
+							<td ><center>{{r.id}}</center></td>
+							<td colspan="2"><center>{{r.name}}</center></td>
+							<td colspan="2"><center>{{r.address}}</center></td>
+							<td colspan="2"><center>{{r.salary}} </center></td>
+							<td colspan="2"><center>{{r.department}} </center></td>
+							<td colspan="2"><center><a href="{{(url_for('deleteAction',id=r['id']))}}"><input type="button" value="Delete" class="btn btn-danger " onclick="button()"></a></center></td>
+						</tr>
+						{% endfor %}					
+					</table>
+					<script type="text/javascript">
+						function button(){
+						alert("Employee Data deleted")
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

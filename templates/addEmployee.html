@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name=”viewport” content=”width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<title>Add Employee details</title>
+		<style type="text/css">
+			.btn_style
+			{
+				float: right;
+				
+			}
+			.main
+			{
+				background-image: url('static/images/mainpage.jpg');
+				background-repeat: no-repeat;
+				background-size: cover;
+				
+				
+			}	
+			.nav_label
+			{
+				padding-top: 10px;
+				color:  #ffffff;
+				padding-left: 10px;
+			}
+
+			.nav_color
+			{
+				background-color: #000000;
+				opacity:.6;
+			}
+			.container_2
+			{							
+				margin-top: 100px;	
+				height: 300px;	
+			}
+			.form_style
+			{
+				border-radius: 5px;
+				background-color: #000000;
+				opacity:.6;
+				padding: 20px;					
+			}
+
+		</style>
+	</head>
+	<body class="main">
+		<div class="col-xs-12 col-md-12 col-sm-12">
+			<header>
+				<div class="container-fluid">
+					<nav class="navbar navbar-expand-md custom-nav nav_color">
+						<div class="container-fluid">
+							<label class="nav_label"><b>Add Employee</b></label>
+							<a href="{{(url_for('Home'))}}">
+								<button type="button" class="btn btn-danger btn_style" style="font-family: times new roman;">View Employee<br>
+								<i class='fas fa-angle-double-right ' style='font-size:20px';></i></button>
+							</a>
+						</div>
+				 	</nav>
+			 	</div>
+			</header>
+		</div>
+		
+		<div class="container">
+			<div class="row container_2">
+				<div class="col-md-2">
+				</div>
+				
+				<div class="col-md-8">
+					<form method="post" action="{{url_for('addAction')}}" class="form_style">
+					
+						<div class="form-group adjust_form">
+							<input type="text" name="name" id="name" placeholder="Full Name" class="form-control">
+						</div>
+
+						<div class="form-group adjust_form">
+							<textarea name="address" id="address" placeholder="Full Address" class="form-control" rows="3"></textarea>
+						</div>
+						
+  						<div class="form-group adjust_form">
+							<input type="text" name="salary" id="salary" placeholder="Salary" class="form-control">
+						</div>
+						
+						<div class="form-group adjust_form">
+							<input type="text" name="department" id="department" placeholder="Department" class="form-control">
+						</div>
+						<center><input type="submit" value="ADD" class="btn btn-danger" onclick="return button()" style="width:100px;height:50px;"></center>	
+					</form>
+				</div>	
+				<script type="text/javascript">
+						function button()
+						{
+		
+							var alpha=/^[a-zA-Z" "]+$/;
+							var num=/^[0-9.]+$/;
+							var name=document.getElementById("name");
+							var address=document.getElementById("address");
+							var salary=document.getElementById("salary");
+							var department=document.getElementById("department");
+							if(name.value.length==0)
+							{
+								alert("Please Enter Employee name ");
+								return false;
+							}
+							else if(!name.value.match(alpha))
+							{
+								alert("Invalid name");
+								name.focus();
+								return false;
+							}
+							if(address.value.length==0)
+							{
+								alert("Please Enter Employee address ");
+								return false;
+							}
+							
+							if(salary.value.length==0)
+							{
+								alert("Please Enter the salary");
+								return false;
+							}
+							else if(!salary.value.match(num))
+							{
+								alert("Invalid amount");
+								salary.focus();
+								return false;
+							}
+							
+							if(department.value.length==0)
+							{
+								alert("Please Enter Employee department ");
+								return false;
+							}
+							else if(!department.value.match(alpha))
+							{
+								alert("Invalid department name");
+								department.focus();
+								return false;
+							}
+							else{
+							alert("Employee Data added")
+							}
+							
+					}
+				</script>
+				<div class="col-md-2">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
